@@ -1,0 +1,64 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 23,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "Default",
+            "hidden": true,
+            "displayName": "Default Config",
+            "description": "Default build using Make generator",
+            "generator": "Unix Makefiles",
+            "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": true
+            }
+        },
+        {
+            "name": "Debug",
+            "displayName": "Debug",
+            "description": "Make Build Debug",
+            "binaryDir": "${sourceDir}/build/Debug",
+            "installDir": "${sourceDir}/install/Debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "inherits": [
+                "Default"
+            ]
+        },
+        {
+            "name": "Release",
+            "displayName": "Release",
+            "description": "Make Build Release",
+            "binaryDir": "${sourceDir}/build/Release",
+            "installDir": "${sourceDir}/install/Release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "inherits": [
+                "Default"
+            ]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Default",
+            "hidden": true,
+            "configurePreset": "Default"
+        },
+        {
+            "name": "Debug",
+            "configurePreset": "Debug",
+            "description": "Build using the debug configuration"
+        },
+        {
+            "name": "Release",
+            "configurePreset": "Release",
+            "description": "Build using the release configuration"
+        }
+    ]
+}
