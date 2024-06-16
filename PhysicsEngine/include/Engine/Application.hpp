@@ -5,6 +5,7 @@
 
 namespace Engine {
 extern void Init();
+extern void Update();
 } // namespace Engine
 
 int main(int argc, char **argv) {
@@ -12,5 +13,8 @@ int main(int argc, char **argv) {
   auto window = Engine::Window::Create();
   window->Init({400, 400, "Hola mundo"});
   Engine::Init();
+  while (window->Running()) {
+    Engine::Update();
+  }
   return 0;
 }

@@ -13,8 +13,7 @@ struct WindowProps {
   const char *title;
 };
 
-class Window {
-public:
+struct Window {
   static std::shared_ptr<Platform::Window> Create();
 };
 
