@@ -4,16 +4,11 @@
 #include <functional>
 
 namespace Platform {
-class Window {
-public:
+struct Window {
   virtual void Init(const Engine::WindowProps &props) = 0;
   virtual bool Running() const = 0;
+  virtual void
+  SetEventListener(std::function<void(Engine::Event &event)> listener) = 0;
   virtual ~Window() {}
-  void SetEventListener(std::function<void(Engine::Event &event)> listener) {
-    listener_ = listener;
-  }
-
-protected:
-  std::function<void(Engine::Event &event)> listener_;
 };
 } // namespace Platform

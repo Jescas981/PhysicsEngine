@@ -2,4 +2,4 @@
 
 namespace Engine {
 class EventDispatcher {};
-} // namespace Engine
+} // namespace Enginek
