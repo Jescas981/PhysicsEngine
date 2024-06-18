@@ -7,6 +7,7 @@ namespace Platform {
 struct Window {
   virtual void Init(const Engine::WindowProps &props) = 0;
   virtual bool Running() const = 0;
+  virtual void Update() const = 0;
   virtual void
   SetEventListener(std::function<void(Engine::Event &event)> listener) = 0;
   virtual ~Window() {}

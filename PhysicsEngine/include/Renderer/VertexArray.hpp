@@ -1,11 +1,10 @@
 #pragma once
-#include <Math/Vector.hpp>
-#include <vector>
+
 
 namespace Renderer {
 class VertexArray {
 public:
-  VertexArray(std::vector<Math::Vector3f> vertices);
+  VertexArray();
   void Bind();
   void Unbind();
 

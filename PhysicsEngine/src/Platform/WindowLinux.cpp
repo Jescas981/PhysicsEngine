@@ -28,6 +28,8 @@ public:
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
       CORE_ERROR("Failed to load GLAD");
     }
+
+    glViewport(0, 0, width, height);
   }
 
   void SetupListeners(std::function<void(Engine::Event &)> listener) {
@@ -84,6 +86,8 @@ private:
   std::function<void(Engine::Event &)> listener_;
 };
 
+void WindowLinux::Update() const { glfwSwapBuffers(raw_->GetWindow()); }
+
 void WindowLinux::Init(const Engine::WindowProps &props) {
   CORE_TRACE("Initializing window");
   raw_ = std::make_unique<RawWindow>(props.width, props.height, props.title);
@@ -95,7 +99,6 @@ void WindowLinux::SetEventListener(
 }
 
 bool WindowLinux::Running() const {
-  glfwPollEvents();
   return !glfwWindowShouldClose(raw_->GetWindow());
 }
 }; // namespace Platform
